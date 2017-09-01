@@ -1,0 +1,141 @@
+<!-- MODAL: Scorecard -->
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h3 class="modal-title">Generating your Scorecard...</h3>
+  </div>
+  <div class="modal-body">
+
+    <div ng-if="sendReportStatus.status == 'success'" class="text-hardwrap alert alert-success form-alert"><span class="fa fa-check-circle"></span>{{sendReportStatus.message}}</div>
+    <div ng-if="sendReportStatus.status == 'error'" class="alert alert-danger form-alert"><span class="fa fa-exclamation-triangle"></span>{{sendReportStatus.message}}</div>
+
+    <div class="col-sm-7 col-xs-12">
+      <p class="well">This scorecard was generated using the criteria specified. Please provide us with a valid email address to receive a full detailed report.</p>
+    </div>
+    <div class="col-sm-5 col-xs-12">
+      <div class="col-xs-9">
+        <div class="form-group">
+          <input type="email" class="form-control input-sm" id="input-email" ng-model="emailAddress" placeholder="Email Address">
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <button type="button" class="btn btn-primary btn-sm align-right" ng-click="sendReport(emailAddress);">{{sendReportButtonText}}</button>
+      </div>
+      <div class="clearfix"></div>
+      <span class="small pull-right"><a href="cloudgenera-sample-report.pdf" target="_new">Download</a> a sample detailed report.</span>
+      <div>&nbsp;</div>
+    </div>
+
+    <!-- SCORECARD RESULTS -->
+    <div id="section-scorecard-results" class="clearfix">
+      <div id="deployment-options" class="clearfix" ng-show="scores.length > 0">
+
+        <div class="col-xs-12">
+          <div class="header">
+            <h3>Deployment Options</h3>
+          </div>
+          <div class="content col-xs-12">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="col-sm-4 cloud-rank" ng-repeat="score in scores" ng-class="{ last: $index === 2 }">
+                  <h2 class="provider-name text-center" ng-class="{ first: $index === 0, second: $index === 1, third: $index === 2 }">{{score.service_provider}}</h2>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="cloud-rank-score col-sm-4" data-provider="{{score.service_provider}}" ng-repeat="score in scores" ng-class="{ first: $index === 0, second: $index === 1, third: $index === 2 }">
+                  <p class="text-center visible-print-block">{{score.cloud_rank}}</p>
+                  <h3 class="text-center visible-print-block">CloudRank<sup>TM</sup></h3>
+                  <canvas class="dial hidden-print"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="col-sm-4 service-level-fit" ng-repeat="score in scores" ng-class="{ last: $index === 2 }">
+                  <div class="fit">
+                    <h4>Service Level Fit</h4>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: {{score.sla}}%;" ng-class="{ low: {{score.sla}} < 85, medium: {{score.sla}} < 93, high: {{score.sla}} >= 93 }" aria-valuenow="{{score.sla}}" aria-valuemin="0" aria-valuemax="100"><span>{{score.sla}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="col-sm-4 security-fit" ng-repeat="score in scores" ng-class="{ last: $index === 2 }">
+                  <div class="fit">
+                    <h4>Security Fit</h4>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: {{score.com}}%;" ng-class="{ low: {{score.com}} < 85, medium: {{score.com}} < 93, high: {{score.com}} >= 93 }" aria-valuenow="{{score.com}}" aria-valuemin="0" aria-valuemax="100"><span>{{score.com}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="col-sm-4 technology-fit" ng-repeat="score in scores" ng-class="{ last: $index === 2 }">
+                  <div class="fit">
+                    <h4>Technology Fit</h4>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: {{score.tech}}%;" ng-class="{ low: {{score.tech}} < 85, medium: {{score.tech}} < 93, high: {{score.tech}} >= 93 }" aria-valuenow="{{score.tech}}" aria-valuemin="0" aria-valuemax="100"><span>{{score.tech}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="col-sm-4 total-cost-of-ownership" ng-repeat="score in scores" ng-class="{ last: $index === 2 }">
+                  <h3>Total Cost of Ownership</h3>
+                  <div class="row provider" ng-class="{ first: $index === 0, second: $index === 1, third: $index === 2 }">
+                    <div class="col-xs-12">
+                      <h5>{{score.service_provider}}</h5>
+                    </div>
+                    <div class="col-md-4 col-lg-6 col-xl-7">
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: {{(score.tco/maxTCO()) * 100}}%;" ng-class="{ first: $index === 0, second: $index === 1, third: $index === 2 }" aria-valuenow="{{(score.tco/maxTCO()) * 100}}" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-8 col-lg-6 col-xl-5">
+                      <p class="total-cost">
+                        {{formatCurrency(score.tco)}}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row build-your-own">
+                    <div class="col-xs-12">
+                      <h5>Build your own</h5>
+                    </div>
+                    <div class="col-md-4 col-lg-6 col-xl-7">
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: {{(totalCost/maxTCO()) * 100}}%;" ng-class="{ no: {{(totalCost/maxTCO()) * 100}} <= 77, low: {{(totalCost/maxTCO()) * 100}} >  77 && {{(totalCost/maxTCO()) * 100}} <= 85, medium: {{(totalCost/maxTCO()) * 100}} >  85 && {{(totalCost/maxTCO()) * 100}} <= 93, high:   {{(totalCost/maxTCO()) * 100}} >  93 && {{(totalCost/maxTCO()) * 100}} <= 100 }" aria-valuenow="{{(totalCost/maxTCO()) * 100}}" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-8 col-lg-6 col-xl-5">
+                      <p class="total-cost">
+                        {{formatCurrency(totalCost)}}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div> <!-- /deployment-options -->
+    </div> <!-- /section-scorecard-results -->
+    <!-- /SCORECARD RESULTS -->
+
+  </div> <!-- /modal-body -->
+</div> <!-- /modal-content -->
+<!-- /MODAL: Scorecard -->
