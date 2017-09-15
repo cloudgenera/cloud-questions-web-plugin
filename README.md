@@ -6,7 +6,7 @@
 
 2) Create the following API endpoints:
 
-| Partner Endpoints | Calls to CloudGenera Endpoints |
+| Partner API Endpoints | Calls to CloudGenera API Endpoints |
 | ----------------- | ------------------------------ |
 | GET /bundles      | GET /api/v1/partner/bundles    |
 | GET /categories      | GET /api/v1/partner/categories    |
@@ -17,7 +17,7 @@
 
 For reference, the CloudGenera API base URL is https://cloudgenera.com/
 
-A working example of the aforementioned endpoints can be found in the backend-examples/node directory. Installations of NodeJs and NPM are required. Edit app.js, and add your Partner API key to the line:
+A working example of the aforementioned endpoints can be found in the backend-examples/node directory. Installations of NodeJs and NPM are required. Edit app.js, and add your Partner API key to the following line:
 
 ```javascript
 var cgPartnerApiKey = "YOUR PARTNER API KEY GOES HERE";
@@ -28,7 +28,7 @@ var cgPartnerApiKey = "YOUR PARTNER API KEY GOES HERE";
 On each outbound request from the Partner API to the CloudGenera API, your Partner API key must be included in the request header, like so:
 
 ```
-"x-api-key": "PARTNER_API_KEY"
+"X-Api-Key": "PARTNER_API_KEY"
 ```
 
 If you do not have an API key, please work with your CloudGenera sales representative to obtain one.
@@ -37,13 +37,14 @@ If you do not have an API key, please work with your CloudGenera sales represent
 
 ### Part 2: Front-end Integration Steps
 
-1) Extract and stage the following source files in a web accessible directory:
+1) Stage the following source files in a web accessible directory:
 
 | Filename | Description |
 | -------- | ----------- |
 | cloudgenera-sample-report.pdf | Sample CloudAssist detailed report |
 | cloudgenera-scorecard-modal.html | Customizable template for Scorecard modal |
 | index.html | Bare-bones example “Cloud Questions” landing page |
+| scripts/accounting.min.js | Currency formatting library |
 | scripts/cloudgenera-plugin-angular.js | Required Angular source plugin |
 | scripts/cloudgenera-plugin-jquery.js | Required jQuery source plugin |
 | styles/cloudgenera-partner.css | Customizable stylesheet for Scorecard modal |
