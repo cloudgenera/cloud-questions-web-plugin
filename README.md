@@ -1,4 +1,4 @@
-## CloudGenera "Cloud Questions" Web Plugin
+## CloudGenera "CloudDemand" Web Plugin
 
 ### Part 1: Back-end Integration Steps
 
