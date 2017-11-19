@@ -1,4 +1,16 @@
-## CloudGenera "CloudDemand" Web Plugin
+## CloudGenera "Cloud Questions" Web Plugin
+
+### What's in the box?
+
+| Filename | Description |
+| -------- | ----------- |
+| clouddemand-example1.html | CloudDemand example template |
+| scripts/accounting.min.js | Currency formatting library |
+| scripts/clouddemand.js | Required CloudDemand library |
+| scripts/justgage.js | Animated gauges library |
+| scripts/raphael-2.1.4.min.js | Vector graphics library |
+
+---
 
 ### Part 1: Back-end Integration Steps
 
@@ -37,85 +49,20 @@ If you do not have an API key, please work with your CloudGenera sales represent
 
 ### Part 2: Front-end Integration Steps
 
-1) Stage the following source files in a web accessible directory:
-
-| Filename | Description |
-| -------- | ----------- |
-| cloudgenera-sample-report.pdf | Sample CloudAssist detailed report |
-| cloudgenera-scorecard-modal.html | Customizable template for Scorecard modal |
-| index.html | Bare-bones example “Cloud Questions” landing page |
-| scripts/accounting.min.js | Currency formatting library |
-| scripts/cloudgenera-plugin-angular.js | Required Angular source plugin |
-| scripts/cloudgenera-plugin-jquery.js | Required jQuery source plugin |
-| styles/cloudgenera-partner.css | Customizable stylesheet for Scorecard modal |
-
-2) Insert the following code in the `<head>` section of your document. Update paths to source files as appropriate.
-
-```html
-<!-- Load required stylesheets -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" href="styles/cloudgenera-partner.css">
-
-<!-- Load required libraries and plugins -->
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.14/angular.min.js"></script>
-<script src="scripts/accounting.min.js"></script>
-<script src="scripts/cloudgenera-plugin-jquery.js"></script>
-<script src="scripts/cloudgenera-plugin-angular.js"></script>
-
-<!-- Instruct Angular to search current path for ng-include partials -->
-<base href=".">
-```
-
-3) Insert the following code into the `<body>` section of your document:
-
-```html
-<!-- START: CloudGenera Partner Content Container -->
-<div id="cg-partner-content-container" ng-app="cgPartner" ng-controller="cgPartnerCtrl">
-
-  <div>
-    <div id="cg-partner-questions" class="clearfix"></div>
-  </div>
-
-  <div>
-    <div id="cg-partner-scorecard" class="modal fade">
-      <div class="modal-dialog modal-lg">
-        <div ng-include="'cloudgenera-scorecard-modal.html'"></div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    $(document).ready(function () {
-      var baseApiPath = 'https://cloudgenera.com/api/v1/marketing/';
-
-      var scorecardResults = function(scorecard) {
-        var s = JSON.parse(scorecard);
-        scope.setBaseApiPath(baseApiPath);
-        scope.renderScorecard(s);
-        $('#cg-partner-scorecard').modal();
-      };
-
-      $('#cg-partner-questions').CloudGeneraPartner(baseApiPath, scorecardResults, false);
-      scope.render();
-    });
-  </script>
-
-</div>
-<!-- END: CloudGenera Partner Content Container -->
-```
-
-4) Customize the following line with your chosen API base URL (from Back-end Integration Steps above):
+1) Edit the file `clouddemand-example1.html`, and customize the following line with your chosen API base URL (from Back-end Integration Steps above):
 
 Find:
 ```javascript
-var baseApiPath = 'https://cloudgenera.com/api/v1/marketing/';
+var baseApiPath = 'https://cloudgenera.com/api/v1/partner/';
 ```
 
 Change to (as an example):
 ```javascript
 var baseApiPath = 'https://mydomain.com/cg-partner/';
 ```
+
+2) Open `clouddemand-example1.html` in a browser window, and verify that basic functionality is working.
+
+3) Use the CloudDemand example templates as the starting point to create a customized CloudDemand experience with your organization's branding.
+
+4) Stage your finalized source files in a web accessible directory.

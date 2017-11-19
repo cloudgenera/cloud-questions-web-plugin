@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>CloudDemand Example Template #1</title>
+
+    <!-- Core CSS (Bootstrap & Font Awesome) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <!-- Core JS Libraries (jQuery & Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- CloudDemand JS Libraries -->
+    <script src="scripts/clouddemand.js"></script>
+    <script src="scripts/accounting.min.js"></script>
+    <script src="scripts/justgage.js"></script>
+    <script src="scripts/raphael-2.1.4.min.js"></script>
+
+    <!-- Some quick and dirty styling to get things movin' -->
+    <style>
+      .custom-background-1 {
+        background: #A9CCE3;
+        background: -moz-linear-gradient(left, #A9CCE3 0%, #A9CCE3 17%, #FFC300 66%, #e66503 100%);
+        background: -webkit-gradient(left top, right top, color-stop(0%, #A9CCE3), color-stop(17%, #A9CCE3), color-stop(66%, #FFC300), color-stop(100%, #e66503));
+        background: -webkit-linear-gradient(left, #A9CCE3 0%, #A9CCE3 17%, #FFC300 66%, #e66503 100%);
+        background: -o-linear-gradient(left, #A9CCE3 0%, #A9CCE3 17%, #FFC300 66%, #e66503 100%);
+        background: -ms-linear-gradient(left, #A9CCE3 0%, #A9CCE3 17%, #FFC300 66%, #e66503 100%);
+        background: linear-gradient(to right, #A9CCE3 0%, #A9CCE3 17%, #FFC300 66%, #e66503 100%);
+      }
+      .custom-container-1 {
+        height: 50px;
+        margin-top: -30px;
+      }
+      .row {
+        padding-bottom: 10px;
+      }
+      .alert-fixed {
+        position: fixed;
+        top: 0px;
+        width: 100%;
+        height: 100px;
+        border-radius: 0px;
+        z-index: 9999;
+      }
+    </style>
+
+    <!-- Required CloudDemand INIT invocation -->
+    <script>
+      $(document).ready(function () {
+        var baseApiPath = 'https://cloudgenera.com/api/v1/partner/';
+        $().CloudDemandInit(baseApiPath);
+      });
+    </script>
+
+  </head>
+
+  <body>
+    <!-- Alert container -->
+    <div id="main-alert" class="alert-fixed hidden">
+      <div id="main-alert-inner" class="alert alert-dismissible" role="alert">
+        <a id="main-alert-close" href="#" class="close" aria-label="close">&times;</a>
+        <p id="main-alert-text"></p>
+      </div>
+    </div>
+
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">CloudDemand Example #1</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="https://github.com/cloudgenera" target="_blank">CloudGenera Github</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <!-- Main jumbotron for a primary message or call to action -->
+    <div class="jumbotron custom-background-1" style="margin-top: 40px;">
+      <div class="container">
+        <h1>Make Cloud decisions in minutes, not months!</h1>
+        <p>This simple template is designed to demonstrate basic use of CloudGenera's CloudDemand functionality. Use it as a starting point to <strong>customize</strong> and <strong>create</strong> something unique and wonderful to your brand!</p>
+      </div>
+    </div>
+
+    <div class="container-fluid custom-container-1" style="background-color: #efefef">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <p class="text-center"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main content container -->
+    <div class="container">
+
+      <!-- CloudDemand Form Questions -->
+      <form action="#" id="main-form">
+
+        <!-- Content Row #1 -->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <h1>Step 1</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et netus et malesuada fames ac turpis egestas. Sed odio morbi quis commodo odio.</p>
+              <p>Et tortor at risus viverra adipiscing at in tellus integer. Purus faucibus ornare suspendisse sed nisi lacus sed. Neque gravida in fermentum et sollicitudin ac. Facilisi morbi tempus iaculis urna id volutpat lacus.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <h3>Your Business Drivers</h3>
+            </div>
+            <div class="form-group">
+              <label for="driving">What is driving your interest in cloud computing?</label>
+              <select id="driving" name="driving" class="form-control">
+                <option value="">Select an option...</option>
+                <option value="new">New products or service introduction</option>
+                <option value="existing">Looking for alternatives to existing operations</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="category">Which option best describes your workload?</label>
+              <select id="category" name="category" class="form-control">
+                <option value="">Select an option...</option>
+                <!-- Options are dynamically generated by clouddemand.js -->
+              </select>
+            </div>
+          </div>
+        </div> <!-- /row -->
+
+        <!-- Content Row #2 -->
+        <div class="row" style="background-color: #efefef">
+          <div class="col-md-6">
+            <div class="form-group">
+              <h1>Step 2</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et netus et malesuada fames ac turpis egestas. Sed odio morbi quis commodo odio.</p>
+              <p>Et tortor at risus viverra adipiscing at in tellus integer. Purus faucibus ornare suspendisse sed nisi lacus sed. Neque gravida in fermentum et sollicitudin ac. Facilisi morbi tempus iaculis urna id volutpat lacus.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <h3>Your Workload's Type and Scale</h3>
+            </div>
+            <div class="form-group">
+              <label for="candidate">Which cloud candidate best represents your workload?</label>
+              <select id="candidate" name="candidate" class="form-control">
+                <option value="">Select an option...</option>
+                <!-- Options are dynamically generated by clouddemand.js -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="scenario">Which scenario best represents your workload?</label>
+              <select id="scenario" name="scenario" class="form-control">
+                <option value="">Select an option...</option>
+                <!-- Options are dynamically generated by clouddemand.js -->
+              </select>
+            </div>
+          </div>
+        </div> <!-- /row -->
+
+        <!-- Content Row #3 -->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <h1>Step 3</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et netus et malesuada fames ac turpis egestas. Sed odio morbi quis commodo odio.</p>
+              <p>Et tortor at risus viverra adipiscing at in tellus integer. Purus faucibus ornare suspendisse sed nisi lacus sed. Neque gravida in fermentum et sollicitudin ac. Facilisi morbi tempus iaculis urna id volutpat lacus.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <h3>Your Workload's Security and Service Level</h3>
+            </div>
+            <div class="form-group">
+              <p class="h5" style="font-weight: bold;">Which concerns, if any, are important for your application workload?</p>
+              <div id="bundles">
+                <p class="label">Select an option...</p>
+                <!-- Options are dynamically generated by clouddemand.js -->
+              </div>
+            </div>
+          </div>
+        </div> <!-- /row -->
+
+        <!-- Content Row #4 -->
+        <div class="row" style="background-color: #eee">
+          <div class="col-md-6">
+            <div class="form-group">
+              <h1>Step 4</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et netus et malesuada fames ac turpis egestas. Sed odio morbi quis commodo odio.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <h3>Discover Your Options</h3>
+            </div>
+            <div class="form-group">
+              <button type="submit" id="btn-score" class="align-center btn btn-primary btn-lg">Generate Scorecard</button>
+            </div>
+          </div>
+        </div> <!-- /row -->
+
+      </form> <!-- /main-form -->
+
+      <hr />
+
+      <footer>
+        <p>&copy; 2017 Your Company, Inc.</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <!-- Scorecard Modal -->
+    <div id="scorecard-modal" class="modal fade">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h3 class="modal-title">Your Recommended Options...</h3>
+          </div>
+          <div class="modal-body">
+
+            <!-- Scorecard Informational -->
+            <div class="col-sm-8">
+              <p class="well">This scorecard is a summary of recommended deployment options based on your selections. If you would like to receive a full report containing all of the details behind this scorecard, please provide a valid email address and click "Send It!"</p>
+            </div>
+            <div class="col-sm-4">
+              <div>
+                <h4>Do you want a detailed report?</h4>
+              </div>
+              <div class="form-inline">
+                <div class="form-group">
+                  <input type="email" class="form-control input-sm" id="input-email" placeholder="Email Address">
+                </div>
+                <button id="btn-send-report" type="button" class="btn btn-primary btn-sm">Send It!</button>
+              </div>
+            </div>
+
+            <!-- Scorecard Results -->
+            <div id="scorecard-results" class="clearfix">
+
+              <div class="col-sm-12">
+                <div class="content col-sm-12">
+                  <div class="row">
+                    <div id="scorecard-providers" class="col-sm-12">
+                      <!-- Content is dynamically generated by clouddemand.js -->
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div id="scorecard-cloudrank-score" class="col-sm-12">
+                      <!-- Content is dynamically generated by clouddemand.js -->
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div id="scorecard-service-level-fit" class="col-sm-12">
+                      <!-- Content is dynamically generated by clouddemand.js -->
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div id="scorecard-security-fit" class="col-sm-12">
+                      <!-- Content is dynamically generated by clouddemand.js -->
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div id="scorecard-technology-fit" class="col-sm-12">
+                      <!-- Content is dynamically generated by clouddemand.js -->
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div id="scorecard-tco" class="col-sm-12">
+                      <!-- Content is dynamically generated by clouddemand.js -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div> <!-- /scorecard-results -->
+
+          </div> <!-- /modal-body -->
+        </div> <!-- /modal-content -->
+      </div> <!-- /modal-dialog -->
+    </div> <!-- /Scorecard Modal -->
+
+  </body>
+</html>
