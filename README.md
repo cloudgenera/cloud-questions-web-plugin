@@ -27,7 +27,7 @@
 | POST /candidate/{uuid}/scenario/{uuid}      | POST /partner/candidate/{uuid}/scenario/{uuid}    |
 | POST /send-report/{uuid}      | POST /partner/send-report/{uuid}    |
 
-For reference, the CloudGenera API base URL is https://cloudgenera.com/api/v1
+For reference, the CloudGenera API base URL is https://cloudgenera.com/api/v1/
 
 A working example of the aforementioned endpoints can be found in the backend-examples/node directory. Installations of NodeJs and NPM are required. Edit app.js, and add your Partner API key to the following line:
 
