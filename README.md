@@ -14,20 +14,20 @@
 
 ### Part 1: Back-end Integration Steps
 
-1) Choose or define an API base URL to use (ex. https://mydomain.com/cg-partner). In the next step, the required Partner API endpoints should be accessible from this API base URL.
+1) Choose or define an API base URL to use (ex. https://mydomain.com/api/clouddemand). In the next step, the required Partner API endpoints should be accessible from this API base URL.
 
 2) Create the following API endpoints:
 
 | Partner API Endpoints | Calls to CloudGenera API Endpoints |
 | ----------------- | ------------------------------ |
-| GET /bundles      | GET /api/v1/partner/bundles    |
-| GET /categories      | GET /api/v1/partner/categories    |
-| GET /categories/{uuid}      | GET /api/v1/partner/categories/{uuid}    |
-| GET /candidate/{uuid}      | GET /api/v1/partner/candidate/{uuid}    |
-| POST /candidate/{uuid}/scenario/{uuid}      | POST /api/v1/partner/candidate/{uuid}/scenario/{uuid}    |
-| POST /send-report/{uuid}      | POST /api/v1/partner/send-report/{uuid}    |
+| GET /bundles      | GET /partner/bundles    |
+| GET /categories      | GET /partner/categories    |
+| GET /categories/{uuid}      | GET /partner/categories/{uuid}    |
+| GET /candidate/{uuid}      | GET /partner/candidate/{uuid}    |
+| POST /candidate/{uuid}/scenario/{uuid}      | POST /partner/candidate/{uuid}/scenario/{uuid}    |
+| POST /send-report/{uuid}      | POST /partner/send-report/{uuid}    |
 
-For reference, the CloudGenera API base URL is https://cloudgenera.com/
+For reference, the CloudGenera API base URL is https://cloudgenera.com/api/v1
 
 A working example of the aforementioned endpoints can be found in the backend-examples/node directory. Installations of NodeJs and NPM are required. Edit app.js, and add your Partner API key to the following line:
 
@@ -58,7 +58,7 @@ var baseApiPath = 'https://cloudgenera.com/api/v1/partner/';
 
 Change to (as an example):
 ```javascript
-var baseApiPath = 'https://mydomain.com/cg-partner/';
+var baseApiPath = 'https://mydomain.com/api/clouddemand/';
 ```
 
 2) Open `clouddemand-example1.html` in a browser window, and verify that basic functionality is working.
