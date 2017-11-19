@@ -1,4 +1,4 @@
-## CloudGenera "Cloud Questions" Web Plugin
+## CloudGenera "CloudDemand" Plugin
 
 ### What's in the box?
 
