@@ -126,7 +126,7 @@ On each outbound request from your Partner API to the CloudGenera API, your Part
 
 For reference, the CloudGenera API base URL is https://cloudgenera.com/api/v1/
 
-##### Partner API Example
+**Partner API Example**
 
 A basic, working example of the above API endpoints can be found in the `backend-examples/node` directory. Installations of NodeJs and NPM are required. To use:
 
@@ -134,7 +134,7 @@ A basic, working example of the above API endpoints can be found in the `backend
 
 2. Edit `app.js`, and add your Partner API key to the following line:
 
-   ```javascript
+```javascript
 var cgPartnerApiKey = "YOUR PARTNER API KEY GOES HERE";
 ```
 
