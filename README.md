@@ -1,26 +1,26 @@
-## CloudGenera "CloudDemand" Plugin
+# CloudGenera "CloudDemand" Plugin
 
-### Overview
+## Overview
 
 CloudDemand is a web service that leverages CloudGenera’s powerful CloudRank™ analytics engine to make decisions about available cloud options, on-the-fly.
 
-Through a series of simple inputs, CloudDemand maps application use cases (ie. Candidates) to permutations of size, scale, service level and security considerations (ie. Scenarios), and produces a ranked output of recommended service provider options.
+Through a series of simple questions, CloudDemand maps application use cases (ie. Candidates) to permutations of size, scale, service level and security considerations (ie. Scenarios), and produces a ranked output of recommended service provider options.
 
-Because CloudDemand is completely API driven, you have complete flexibility in deciding how to customize the "look-and-feel" of your CloudDemand front-end experience. Several examples are provided, but feel free to customize, modify, and pick apart our code in whatever way best suits your need.
+Because CloudDemand is API driven, you have complete flexibility in deciding how to customize the "look-and-feel" of your CloudDemand front-end experience. Several examples are provided, but feel free to customize, modify, and pick apart our code in whatever way best suits your need.
 
 ![clouddemand-screenshot1](https://user-images.githubusercontent.com/13589229/33610199-c3ee185c-d998-11e7-8cb6-03c50d6add4f.png)
 
 ![clouddemand-screenshot2](https://user-images.githubusercontent.com/13589229/33610200-c3fe7cf6-d998-11e7-92c1-a3ebbcc747b3.png)
 
-### Requirements
+## Requirements
 
 1.	You must have a valid CloudGenera API key to use the CloudDemand plugin. If you do not have a valid API key, please contact your CloudGenera account representative to obtain one.
 
 2.	You must have the ability to create several API endpoints, which are:
   - Accessible from your CloudDemand installation (whether standalone or inline)
-  - Able to communicate with external API endpoints
+  - Able to communicate with external CloudGenera API endpoints
 
-### What's in the box?
+## What's in the box?
 
 | Filename | Description |
 | -------- | ----------- |
@@ -31,7 +31,7 @@ Because CloudDemand is completely API driven, you have complete flexibility in d
 | scripts/raphael-2.1.4.min.js | Vector graphics library |
 | backend-examples/node/app.js | Example partner API written in NodeJs |
 
-### Components In Use
+## Components In Use
 
 For ease of use and extensibility, the CloudDemand plugin and example templates were built using standard web development frameworks and components.
 
@@ -44,7 +44,7 @@ For ease of use and extensibility, the CloudDemand plugin and example templates 
 | [JustGage](http://justgage.com/) | JustGage is a handy JavaScript plugin for generating and animating nice & clean gauges. |
 | [Raphael](http://dmitrybaranovskiy.github.io/raphael/) | Raphaël is a small JavaScript library that should simplify your work with vector graphics on the web. |
 
-### Basic Use Cases and Examples
+## Basic Use Cases and Examples
 
 The CloudDemand plugin enables you to generate demand and capture leads for cloud. Depending on comfort level, most partners tend to leverage the CloudDemand plugin in two ways:
 
@@ -52,15 +52,13 @@ The CloudDemand plugin enables you to generate demand and capture leads for clou
 
 2.	**Inline:** Partners incorporate the CloudDemand form and scorecard elements into an existing web experience, using the CloudDemand example template(s) source code as reference material.
 
-#### Live Examples
+### Live Examples
   - [CloudGenera’s CloudDemand Landing Page](https://cloudgenera.com/clouddemand)
   - [CloudDemand Example Template #1](https://cloudgenera.com/clouddemand/example-1)
 
 ---
 
-### Getting Started
-
-**Estimated Time: 5 minutes**
+## Getting Started
 
 Getting started with the CloudDemand plugin is quick and easy. You can use the CloudDemand example template(s) to understand how the CloudDemand plugin works, and assess what level of customization will be required to meet your objectives.
 
@@ -91,9 +89,7 @@ function forTestingPurposesOnly() {
 
 ---
 
-### Next Steps: Building Partner API Endpoints
-
-**Estimated Time: 30 minutes (depending on framework)**
+## Next Steps: Building Partner API Endpoints
 
 Before deploying your CloudDemand implementation to a production environment, you'll need to establish your own CloudDemand API endpoints to proxy API requests originating from your CloudDemand web interface to the CloudGenera API.
 
@@ -101,7 +97,7 @@ As a best practice, proxying your API requests to the CloudGenera API allows you
 
 A working API example has also been provided for reference.
 
-#### API Authorization
+### API Authorization
 
 On each outbound request from your Partner API to the CloudGenera API, your Partner API key must be included in the request header, like so:
 
@@ -109,7 +105,7 @@ On each outbound request from your Partner API to the CloudGenera API, your Part
 "X-Api-Key": "YOUR-API-KEY-GOES-HERE"
 ```
 
-#### Back-end: Creating Your Partner API Endpoints
+### Back-end: Creating Your Partner API Endpoints
 
 1. Choose or define an API base URL to use (ex. https://mydomain.com/api/clouddemand). In the next step, the required Partner API endpoints should be accessible from this API base URL.
 
@@ -117,16 +113,16 @@ On each outbound request from your Partner API to the CloudGenera API, your Part
 
 | Partner API Endpoints | Calls to CloudGenera API Endpoints |
 | ----------------- | ------------------------------ |
-| GET /bundles      | GET /partner/bundles    |
-| GET /categories      | GET /partner/categories    |
-| GET /categories/{uuid}      | GET /partner/categories/{uuid}    |
-| GET /candidate/{uuid}      | GET /partner/candidate/{uuid}    |
-| POST /candidate/{uuid}/scenario/{uuid}      | POST /partner/candidate/{uuid}/scenario/{uuid}    |
-| POST /send-report/{uuid}      | POST /partner/send-report/{uuid}    |
+| `GET` /bundles      | `GET` /partner/bundles    |
+| `GET` /categories      | `GET` /partner/categories    |
+| `GET` /categories/:uuid      | `GET` /partner/categories/:uuid    |
+| `GET` /candidate/:uuid      | `GET` /partner/candidate/:uuid    |
+| `POST` /candidate/:uuid/scenario/:uuid      | `POST` /partner/candidate/:uuid/scenario/:uuid    |
+| `POST` /send-report/:uuid      | `POST` /partner/send-report/:uuid    |
 
 For reference, the CloudGenera API base URL is https://cloudgenera.com/api/v1/
 
-**Partner API Example**
+#### Partner API Example
 
 A basic, working example of the above API endpoints can be found in the `backend-examples/node` directory. Installations of NodeJs and NPM are required. To use:
 
@@ -140,7 +136,7 @@ var cgPartnerApiKey = "YOUR PARTNER API KEY GOES HERE";
 
 3. Run `node app.js`
 
-#### Front-end: Update the `baseApiPath` in CloudDemand Web Interface
+### Front-end: Update the `baseApiPath` in CloudDemand Web Interface
 
 After creating your Partner API endpoints, you'll need to update the `baseApiPath` reference in your CloudDemand web interface to reflect the new base API path that you've created.
 
