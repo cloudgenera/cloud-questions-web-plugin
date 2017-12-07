@@ -1,5 +1,25 @@
 ## CloudGenera "CloudDemand" Plugin
 
+### Overview
+
+CloudDemand is a web service that leverages CloudGenera’s powerful CloudRank™ analytics engine to make decisions about available cloud options, on-the-fly.
+
+Through a series of simple inputs, CloudDemand maps application use cases (ie. Candidates) to permutations of size, scale, service level and security considerations (ie. Scenarios), and produces a ranked output of recommended service provider options.
+
+Because CloudDemand is completely API driven, you have complete flexibility in deciding how to customize the "look-and-feel" of your CloudDemand front-end experience. Several examples are provided, but feel free to customize, modify, and pick apart our code in whatever way best suits your need.
+
+![clouddemand-screenshot1](https://user-images.githubusercontent.com/13589229/33610199-c3ee185c-d998-11e7-8cb6-03c50d6add4f.png)
+
+![clouddemand-screenshot2](https://user-images.githubusercontent.com/13589229/33610200-c3fe7cf6-d998-11e7-92c1-a3ebbcc747b3.png)
+
+### Requirements
+
+1.	You must have a valid CloudGenera API key to use the CloudDemand plugin. If you do not have a valid API key, please contact your CloudGenera account representative to obtain one.
+
+2.	You must have the ability to create several API endpoints, which are:
+  - Accessible from your CloudDemand installation (whether standalone or inline)
+  - Able to communicate with external API endpoints
+
 ### What's in the box?
 
 | Filename | Description |
@@ -9,14 +29,91 @@
 | scripts/clouddemand.js | Required CloudDemand library |
 | scripts/justgage.js | Animated gauges library |
 | scripts/raphael-2.1.4.min.js | Vector graphics library |
+| backend-examples/node/app.js | Example partner API written in NodeJs |
+
+### Components In Use
+
+For ease of use and extensibility, the CloudDemand plugin and example templates were built using standard web development frameworks and components.
+
+| Component | Description |
+| -------- | ----------- |
+| [jQuery](https://jquery.com/) | jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. |
+| [Bootstrap](https://getbootstrap.com/) | Bootstrap is an open source toolkit for building responsive, mobile-first projects on the web with HTML, CSS, and JS. |
+| [FontAwesome](http://fontawesome.io/) | Font Awesome gives you scalable vector icons that can instantly be customized — size, color, drop shadow, and anything that can be done with the power of CSS. |
+| [accounting.js](http://openexchangerates.github.io/accounting.js/) | accounting.js is a tiny JavaScript library by Open Exchange Rates, providing simple and advanced number, money and currency formatting. |
+| [JustGage](http://justgage.com/) | JustGage is a handy JavaScript plugin for generating and animating nice & clean gauges. |
+| [Raphael](http://dmitrybaranovskiy.github.io/raphael/) | Raphaël is a small JavaScript library that should simplify your work with vector graphics on the web. |
+
+### Basic Use Cases and Examples
+
+The CloudDemand plugin enables you to generate demand and capture leads for cloud. Depending on comfort level, most partners tend to leverage the CloudDemand plugin in two ways:
+
+1.	**Standalone:** Partners customize the provided CloudDemand example template(s) to their liking with branding, verbiage and other cosmetic changes, and then use the customized template as a standalone landing page.
+
+2.	**Inline:** Partners incorporate the CloudDemand form and scorecard elements into an existing web experience, using the CloudDemand example template(s) source code as reference material.
+
+#### Live Examples
+  - [CloudGenera’s CloudDemand Landing Page](https://cloudgenera.com/clouddemand)
+  - [CloudDemand Example Template #1](https://cloudgenera.com/clouddemand/example-1)
 
 ---
 
-### Part 1: Back-end Integration Steps
+### Getting Started
 
-1) Choose or define an API base URL to use (ex. https://mydomain.com/api/clouddemand). In the next step, the required Partner API endpoints should be accessible from this API base URL.
+**Estimated Time: 5 minutes**
 
-2) Create the following API endpoints:
+Getting started with the CloudDemand plugin is quick and easy. You can use the CloudDemand example template(s) to understand how the CloudDemand plugin works, and assess what level of customization will be required to meet your objectives.
+
+1. Edit the file `scripts/clouddemand.js`, and find the following code block:
+```javascript
+function forTestingPurposesOnly() {
+    //--------------------------
+    // FOR TESTING PURPOSES ONLY:
+    //--------------------------
+    // 1) Uncomment the line below and add your API key just to see if things are working.
+    // 2) When you're done testing, remove your API key from code and re-comment the line.
+    // 3) Seriously, remove your API key from code before you deploy to production. Just sayin'.
+
+    //opts.headers = {'X-Api-Key':'YOUR-API-KEY-GOES-HERE'};
+}
+```
+
+2. Uncomment the following line, and replace the text `YOUR-API-KEY-GOES-HERE` with your API key:
+```javascript
+//opts.headers = {'X-Api-Key':'YOUR-API-KEY-GOES-HERE'};
+```
+
+3. Save your changes to `scripts/clouddemand.js`.
+
+4. In a browser window, open the file `clouddemand-example1.html`, and validate that:
+   - the CloudDemand dropdown menus populate with options
+   - you can generate a scorecard by clicking on the "Generate Scorecard" button
+
+---
+
+### Next Steps: Building Partner API Endpoints
+
+**Estimated Time: 30 minutes (depending on framework)**
+
+Before deploying your CloudDemand implementation to a production environment, you'll need to establish your own CloudDemand API endpoints to proxy API requests originating from your CloudDemand web interface to the CloudGenera API.
+
+As a best practice, proxying your API requests to the CloudGenera API allows you to include your API key server-side, so your API key isn't exposed in client-side code.
+
+A working API example has also been provided for reference.
+
+#### API Authorization
+
+On each outbound request from your Partner API to the CloudGenera API, your Partner API key must be included in the request header, like so:
+
+```javascript
+"X-Api-Key": "YOUR-API-KEY-GOES-HERE"
+```
+
+#### Back-end: Creating Your Partner API Endpoints
+
+1. Choose or define an API base URL to use (ex. https://mydomain.com/api/clouddemand). In the next step, the required Partner API endpoints should be accessible from this API base URL.
+
+2. Create the following API endpoints:
 
 | Partner API Endpoints | Calls to CloudGenera API Endpoints |
 | ----------------- | ------------------------------ |
@@ -29,40 +126,34 @@
 
 For reference, the CloudGenera API base URL is https://cloudgenera.com/api/v1/
 
-A working example of the aforementioned endpoints can be found in the backend-examples/node directory. Installations of NodeJs and NPM are required. Edit app.js, and add your Partner API key to the following line:
+##### Partner API Example
 
-```javascript
+A basic, working example of the above API endpoints can be found in the `backend-examples/node` directory. Installations of NodeJs and NPM are required. To use:
+
+1. Run `npm install`
+
+2. Edit `app.js`, and add your Partner API key to the following line:
+
+   ```javascript
 var cgPartnerApiKey = "YOUR PARTNER API KEY GOES HERE";
 ```
 
-**API Authentication**
+3. Run `node app.js`
 
-On each outbound request from the Partner API to the CloudGenera API, your Partner API key must be included in the request header, like so:
+#### Front-end: Update the `baseApiPath` in CloudDemand Web Interface
 
-```
-"X-Api-Key": "PARTNER_API_KEY"
-```
+After creating your Partner API endpoints, you'll need to update the `baseApiPath` reference in your CloudDemand web interface to reflect the new base API path that you've created.
 
-If you do not have an API key, please work with your CloudGenera sales representative to obtain one.
+  - **IF you're using a CloudDemand example template**, edit the template file and customize the following line with your chosen API base URL (from "Back-end: Creating Your Partner API Endpoints"):
 
----
-
-### Part 2: Front-end Integration Steps
-
-1) Edit the file `clouddemand-example1.html`, and customize the following line with your chosen API base URL (from Back-end Integration Steps above):
-
-Find:
+  Find:
 ```javascript
 var baseApiPath = 'https://cloudgenera.com/api/v1/partner/';
 ```
 
-Change to (as an example):
+   Change to (as an example):
 ```javascript
 var baseApiPath = 'https://mydomain.com/api/clouddemand/';
 ```
 
-2) Open `clouddemand-example1.html` in a browser window, and verify that basic functionality is working.
-
-3) Use the CloudDemand example templates as the starting point to create a customized CloudDemand experience with your organization's branding.
-
-4) Stage your finalized source files in a web accessible directory.
+  - **IF you've created your own custom CloudDemand html files**, then update the previous references to `https://cloudgenera.com/api/v1/partner/` with the new base API path that you've created.
