@@ -62,7 +62,9 @@ The CloudDemand plugin enables you to generate demand and capture leads for clou
 
 Getting started with the CloudDemand plugin is quick and easy. You can use the CloudDemand example template(s) to understand how the CloudDemand plugin works, and assess what level of customization will be required to meet your objectives.
 
-1. Edit the file `scripts/clouddemand.js`, and find the following code block:
+1. Clone this repository, or [download](https://github.com/cloudgenera/cloudgenera-clouddemand-plugin/archive/master.zip) and extract this project.
+
+2. Edit the file `scripts/clouddemand.js`, and find the following code block:
 ```javascript
 function forTestingPurposesOnly() {
     //--------------------------
@@ -76,14 +78,14 @@ function forTestingPurposesOnly() {
 }
 ```
 
-2. Uncomment the following line, and replace the text `YOUR-API-KEY-GOES-HERE` with your API key:
+3. Uncomment the following line, and replace the text `YOUR-API-KEY-GOES-HERE` with your API key:
 ```javascript
 //opts.headers = {'X-Api-Key':'YOUR-API-KEY-GOES-HERE'};
 ```
 
-3. Save your changes to `scripts/clouddemand.js`.
+4. Save your changes to `scripts/clouddemand.js`.
 
-4. In a browser window, open the file `clouddemand-example1.html`, and validate that:
+5. In a browser window, open the file `clouddemand-example1.html`, and validate that:
    - the CloudDemand dropdown menus populate with options
    - you can generate a scorecard by clicking on the "Generate Scorecard" button
 
@@ -124,7 +126,7 @@ For reference, the CloudGenera API base URL is https://cloudgenera.com/api/v1/
 
 #### Partner API Example
 
-A basic, working example of the above API endpoints can be found in the `backend-examples/node` directory. Installations of NodeJs and NPM are required. To use:
+A basic working example of the above API endpoints can be found in the `backend-examples/node` directory. Installations of NodeJs and NPM are required. To use:
 
 1. Run `npm install`
 
