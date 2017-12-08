@@ -1,5 +1,20 @@
 # CloudGenera "CloudDemand" Plugin
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Requirements](#requirements)
+- [What's in the box?](#whats-in-the-box)
+- [Components In Use](#components-in-use)
+- [Basic Use Cases and Examples](#basic-use-cases-and-examples)
+  - [Live Examples](#live-examples)
+- **[Getting Started](#getting-started)**
+- [Next Steps: Building Partner API Endpoints](#next-steps-building-partner-api-endpoints)
+  - [API Authorization](#api-authorization)
+  - [Back-end: Creating Your Partner API Endpoints](#back-end-creating-your-partner-api-endpoints)
+    - [Partner API Example](#partner-api-example)
+  - [Front-end: Update API path in CloudDemand Web Interface](#front-end-update-base-api-path-in-clouddemand-web-interface)
+
 ## Overview
 
 CloudDemand is a web service that leverages CloudGenera’s powerful CloudRank™ analytics engine to make decisions about available cloud options, on-the-fly.
@@ -138,7 +153,7 @@ var cgPartnerApiKey = "YOUR PARTNER API KEY GOES HERE";
 
 3. Run `node app.js`
 
-### Front-end: Update the `baseApiPath` in CloudDemand Web Interface
+### Front-end: Update Base API Path in CloudDemand Web Interface
 
 After creating your Partner API endpoints, you'll need to update the `baseApiPath` reference in your CloudDemand web interface to reflect the new base API path that you've created.
 
