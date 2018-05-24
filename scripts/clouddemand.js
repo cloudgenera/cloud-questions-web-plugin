@@ -262,89 +262,88 @@
             score.cloud_rank = Math.ceil(score.rank / 4);
 
             // Generate Service Provider names section
-            generateHtml = `
-              <div class="col-sm-4">
-                <h3 class="text-center">` + score.service_provider + `</h3>
-              </div>`;
+            generateHtml = ' \
+              <div class="col-sm-4"> \
+                <h3 class="text-center">' + score.service_provider + '</h3> \
+              </div>';
             $('#scorecard-providers').append(generateHtml);
 
             // Generate CloudRank score and gauge
-            generateHtml = `
-              <div class="col-sm-4" style="margin: 0px; padding: 0px;">
-                <div id="score-dial-` + index + `" style="width=100%; margin-top: -50px; padding: 0px;"></div>
-              </div>`;
+            generateHtml = ' \
+              <div class="col-sm-4" style="margin: 0px; padding: 0px;"> \
+                <div id="score-dial-' + index + '" style="width=100%; margin-top: -50px; padding: 0px;"></div> \
+              </div>';
             $('#scorecard-cloudrank-score').append(generateHtml);
             renderDial(index, score.cloud_rank);
 
             // Generate Service Level Fit score section
-            generateHtml = `
-              <div class="col-sm-4">
-                <h4>Service Level Fit</h4>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width:` + score.sla + `%;" aria-valuenow="` + score.sla + `" aria-valuemin="0" aria-valuemax="100">
-                      <span>` + score.sla + `</span>
-                    </div>
-                  </div>
-                </div>
-              </div>`;
+            generateHtml = ' \
+              <div class="col-sm-4"> \
+                <h4>Service Level Fit</h4> \
+                  <div class="progress"> \
+                    <div class="progress-bar" role="progressbar" style="width:' + score.sla + '%;" aria-valuenow="' + score.sla + '" aria-valuemin="0" aria-valuemax="100"> \
+                      <span>' + score.sla + '</span> \
+                    </div> \
+                  </div> \
+                </div> \
+              </div>';
             $('#scorecard-service-level-fit').append(generateHtml);
 
             // Generate Security Fit score section
-            generateHtml = `
-              <div class="col-sm-4">
-                <h4>Security Fit</h4>
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width:` + score.com + `%;" aria-valuenow="` + score.com + `" aria-valuemin="0" aria-valuemax="100">
-                    <span>` + score.com + `</span>
-                  </div>
-                </div>
-              </div>`;
+            generateHtml = ' \
+              <div class="col-sm-4"> \
+                <h4>Security Fit</h4> \
+                <div class="progress"> \
+                  <div class="progress-bar" role="progressbar" style="width:' + score.com + '%;" aria-valuenow="' + score.com + '" aria-valuemin="0" aria-valuemax="100"> \
+                    <span>' + score.com + '</span> \
+                  </div> \
+                </div> \
+              </div>';
             $('#scorecard-security-fit').append(generateHtml);
 
             // Generate Technology Fit score section
-            generateHtml = `
-              <div class="col-sm-4">
-                <h4>Technology Fit</h4>
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width:` + score.tech + `%;" aria-valuenow="` + score.tech + `" aria-valuemin="0" aria-valuemax="100">
-                    <span>` + score.tech + `</span>
-                  </div>
-                </div>
-              </div>`;
+            generateHtml = ' \
+              <div class="col-sm-4"> \
+                <h4>Technology Fit</h4> \
+                <div class="progress"> \
+                  <div class="progress-bar" role="progressbar" style="width:' + score.tech + '%;" aria-valuenow="' + score.tech + '" aria-valuemin="0" aria-valuemax="100"> \
+                    <span>' + score.tech + '</span> \
+                  </div> \
+                </div> \
+              </div>';
             $('#scorecard-technology-fit').append(generateHtml);
 
             // Generate Total Cost of Ownership section
-            generateHtml = `
-              <div class="col-sm-4">
-                <h3>Total Cost of Ownership</h3>
-                <div class="row">
-                  <div class="col-sm-12">
-                    <h5>` + score.service_provider + `</h5>
-                  </div>
-                  <div class="col-sm-5">
-                    <div class="progress">
-                      <div class="progress-bar" role="progressbar" style="width: ` + ((score.tco/maxCost) * 100) + `%;" aria-valuenow="` + ((score.tco/maxCost) * 100) + `" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                  <div class="col-sm-7">
-                    <p>` + formatCurrency(score.tco) + `</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-12">
-                    <h5>Build your own</h5>
-                  </div>
-                  <div class="col-sm-5">
-                    <div class="progress">
-                      <div class="progress-bar" role="progressbar" style="width: ` + ((byoCost/maxCost) * 100) + `%;"  aria-valuenow="` + ((byoCost/maxCost) * 100) + `" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                  <div class="col-sm-7">
-                    <p>` + formatCurrency(byoCost) + `</p>
-                  </div>
-                </div>
-              </div>
-            `;
+            generateHtml = ' \
+              <div class="col-sm-4"> \
+                <h3>Total Cost of Ownership</h3> \
+                <div class="row"> \
+                  <div class="col-sm-12"> \
+                    <h5>' + score.service_provider + '</h5> \
+                  </div> \
+                  <div class="col-sm-5"> \
+                    <div class="progress"> \
+                      <div class="progress-bar" role="progressbar" style="width: ' + ((score.tco/maxCost) * 100) + '%;" aria-valuenow="' + ((score.tco/maxCost) * 100) + '" aria-valuemin="0" aria-valuemax="100"></div> \
+                    </div> \
+                  </div> \
+                  <div class="col-sm-7"> \
+                    <p>' + formatCurrency(score.tco) + '</p> \
+                  </div> \
+                </div> \
+                <div class="row"> \
+                  <div class="col-sm-12"> \
+                    <h5>Build your own</h5> \
+                  </div> \
+                  <div class="col-sm-5"> \
+                    <div class="progress"> \
+                      <div class="progress-bar" role="progressbar" style="width: ' + ((byoCost/maxCost) * 100) + '%;"  aria-valuenow="' + ((byoCost/maxCost) * 100) + '" aria-valuemin="0" aria-valuemax="100"></div> \
+                    </div> \
+                  </div> \
+                  <div class="col-sm-7"> \
+                    <p>' + formatCurrency(byoCost) + '</p> \
+                  </div> \
+                </div> \
+              </div>';
             $('#scorecard-tco').append(generateHtml);
         }
     };
