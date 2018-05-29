@@ -169,12 +169,15 @@
             myData[key].push(val);
         });
 
+        myData = JSON.stringify(myData);
+
         $.ajax({
             url: requestUrl,
             headers: opts.headers,
             method: 'POST',
             data: myData,
-            type: 'JSON',
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
             success: function (data) {
                 resetScoreButton();
 
@@ -354,16 +357,21 @@
         var requestUrl = opts.baseUrl + opts.urls.report;
         requestUrl = requestUrl.replace('{' + opts.scorecardUuidVar + '}', scorecardId);
 
-        var requestBody = {"emailTo": email};
+        var requestBody = JSON.stringify({ emailTo: email });
 
         $.ajax({
             url: requestUrl,
             headers: opts.headers,
             method: 'POST',
             data: requestBody,
-            type: 'JSON',
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
             success: function (data) {
-              alertHandler("success", "A detailed report was sent to " + email);
+              if (jqXHR.status === 200) {
+                alertHandler("success", "A detailed report was sent to " + email);
+              } else {
+                alertHandler("error", "There was a problem sending the report.");
+              }
               resetSendReportButton();
             },
             error: function (jqXHR, textStatus, err) {
