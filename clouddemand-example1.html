@@ -25,6 +25,13 @@
     <script src="scripts/justgage.js"></script>
     <script src="scripts/raphael-2.1.4.min.js"></script>
 
+    <!-- CloudDemand Invocation -->
+    <script>
+      $(document).ready(function () {
+        $().CloudDemandInit('XXXXXXXXXXXXXXXXXXXX'); // Your partner code goes here
+      });
+    </script>
+
     <!-- Some quick and dirty styling to get things movin' -->
     <style>
       .custom-background-1 {
@@ -52,14 +59,6 @@
         z-index: 9999;
       }
     </style>
-
-    <!-- Required CloudDemand INIT invocation -->
-    <script>
-      $(document).ready(function () {
-        var baseApiPath = 'https://xxxxxxxxxxxxxxxxxxxxx.cloudgenera.com/partner/api/v1/clouddemand/';
-        $().CloudDemandInit(baseApiPath);
-      });
-    </script>
 
   </head>
 

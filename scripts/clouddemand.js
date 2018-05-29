@@ -5,9 +5,9 @@
  **/
 ;(function ($) {
     const defaultOptions = {
-            debugEnabled: false,
-            baseUrl: 'https://cloudgenera.com/api/v1/partner/',
+            baseUrl: 'https://{partnerId}.cloudgenera.com/partner/api/v1/clouddemand/',
             uuidVar: 'uuid',
+            partnerIdVar: 'partnerId',
             candidateUuidVar: 'candidateUuid',
             scenarioUuidVar: 'scenarioUuid',
             scorecardUuidVar: 'scorecardUuid',
@@ -476,33 +476,16 @@
       $('#main-alert-text').empty().html(am + alertMessage);
     }
 
-    $.fn.CloudDemandInit = function(options) {
+    $.fn.CloudDemandInit = function(id) {
         opts = defaultOptions;
 
-        if (typeof options === 'string') {
-            opts.baseUrl = options
+        if (typeof id === 'string') {
+          opts.baseUrl = opts.baseUrl.replace('{' + opts.partnerIdVar + '}', id);
         } else {
-            options = options || {};
-
-            $.each(options, function(i, v) {
-                opts[i] = v;
-            });
+          alertHandler("error", "Invalid argument passed to CloudDemandInit function. Argument must be a string.");
         }
-
-        forTestingPurposesOnly();
 
         setupAndLoad();
     };
-
-    function forTestingPurposesOnly() {
-        //--------------------------
-        // FOR TESTING PURPOSES ONLY:
-        //--------------------------
-        // 1) Uncomment the line below and add your API key just to see if things are working.
-        // 2) When you're done testing, remove your API key from code and re-comment the line.
-        // 3) Seriously, remove your API key from code before you deploy to production. Just sayin'.
-
-        //opts.headers = {'X-Api-Key':'YOUR-API-KEY-GOES-HERE'};
-    }
 
 })(jQuery);
