@@ -367,15 +367,17 @@
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
             success: function (data) {
+              alertHandler("success", "A detailed report was sent to " + email);
+              resetSendReportButton();
+            },
+            error: function (jqXHR, textStatus, err) {
+              // Handle erroneous trigger of error callback if ajax call initially determines 
+              // success/failure of request using pre-flight OPTIONS request instead of POST request
               if (jqXHR.status === 200) {
                 alertHandler("success", "A detailed report was sent to " + email);
               } else {
                 alertHandler("error", "There was a problem sending the report.");
               }
-              resetSendReportButton();
-            },
-            error: function (jqXHR, textStatus, err) {
-              alertHandler("error", "There was a problem sending the report.");
               resetSendReportButton();
             }
         });
