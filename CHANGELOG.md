@@ -4,6 +4,7 @@
 
 * Added CHANGELOG
 * Updated README
+* Fix: Handle false trigger of error callback when sending report
 * Fix: Ensure POST data is sent as type 'application/json'; better error notifications
 * Fix: Basic IE 11 compatibility
 
