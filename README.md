@@ -14,6 +14,9 @@
   - [Back-end: Creating Your Partner API Endpoints](#back-end-creating-your-partner-api-endpoints)
     - [Partner API Example](#partner-api-example)
   - [Front-end: Update API path in CloudDemand Web Interface](#front-end-update-base-api-path-in-clouddemand-web-interface)
+- [Known Issues](#known-issues)
+  - [Internet Explorer Support](#internet-explorer-support)
+- [Release History](#release-history)
 
 ## Overview
 
@@ -170,3 +173,17 @@ var baseApiPath = 'https://mydomain.com/api/clouddemand/';
 ```
 
   - **IF you've created your own custom CloudDemand html files**, then update the previous references to `https://cloudgenera.com/api/v1/partner/` with the new base API path that you've created.
+
+---
+
+## Known Issues
+
+Issues that are currently known about with workarounds.
+
+#### Internet Explorer Support
+
+As of release v1.1.3, the CloudDemand plugin offers basic compatibility with Internet Explorer 11. While the plugin (specifically the clouddemand.js library) may work in prior versions of Internet Explorer, versions of Internet Explorer prior to version 11 are not supported.
+
+## Release History
+
+View the [changelog](./CHANGELOG.md) for a summary of each release.
