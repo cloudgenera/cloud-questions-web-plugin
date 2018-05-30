@@ -476,13 +476,18 @@
       $('#main-alert-text').empty().html(am + alertMessage);
     }
 
-    $.fn.CloudDemandInit = function(id) {
+    $.fn.CloudDemandInit = function(id, baseUrlOverride) {
         opts = defaultOptions;
 
         if (typeof id === 'string') {
           opts.baseUrl = opts.baseUrl.replace('{' + opts.partnerIdVar + '}', id);
         } else {
           alertHandler("error", "Invalid argument passed to CloudDemandInit function. Argument must be a string.");
+        }
+
+        // Override opts.baseUrl value if valid argument is passed
+        if (typeof baseUrlOverride === 'string') {
+          opts.baseUrl = baseUrlOverride;
         }
 
         setupAndLoad();
