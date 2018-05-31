@@ -13,6 +13,7 @@
 - [Known Issues](#known-issues)
   - [Internet Explorer Support](#internet-explorer-support)
 - [Release History](#release-history)
+  - [Upgrading to CloudDemand 2.0](#upgrading-to-clouddemand-2.0)
 
 ## Overview
 
@@ -126,3 +127,7 @@ As of release v1.1.3, the CloudDemand plugin offers basic compatibility with Int
 ## Release History
 
 View the [changelog](./CHANGELOG.md) for a summary of each release.
+
+### Upgrading to CloudDemand 2.0
+
+View the [Upgrading to CloudDemand 2.0](./UPGRADE-1.x-2.0.md) guide.
