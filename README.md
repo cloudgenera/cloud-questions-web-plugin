@@ -26,13 +26,13 @@ Because CloudDemand is API driven, you have complete flexibility in deciding how
 
 ![clouddemand-screenshot2](https://user-images.githubusercontent.com/13589229/33610200-c3fe7cf6-d998-11e7-92c1-a3ebbcc747b3.png)
 
-#### Requirements
+### Requirements
 
 1. You must have a valid CloudDemand "partner code" to use the CloudDemand plugin. If you do not have a valid partner code, please contact your CloudGenera account representative to obtain one, or [click here](#https://cloudgenera.com/contact-us) to contact CloudGenera directly.
 
 2. If using Internet Explorer in conjunction with the CloudDemand plugin, you must use Internet Explorer version 11 or higher. Prior versions of Internet Explorer are not supported. See [Known Issues](#known-issues).
 
-#### What's in the box?
+### What's in the box?
 
 | Filename | Description |
 | -------- | ----------- |
@@ -42,7 +42,7 @@ Because CloudDemand is API driven, you have complete flexibility in deciding how
 | scripts/justgage.js | Animated gauges library |
 | scripts/raphael-2.1.4.min.js | Vector graphics library |
 
-#### Components In Use
+### Components In Use
 
 For ease of use and extensibility, the CloudDemand plugin and example templates were built using standard web development frameworks and components.
 
@@ -117,7 +117,7 @@ If you're having trouble or need a little inspiration, check out a few live Clou
 
 Issues that are currently known about with workarounds.
 
-#### Internet Explorer Support
+### Internet Explorer Support
 
 As of release v1.1.3, the CloudDemand plugin offers basic compatibility with Internet Explorer 11 and later versions. While the plugin (specifically the clouddemand.js library) may work in prior versions of Internet Explorer, versions of Internet Explorer prior to version 11 are not supported.
 
