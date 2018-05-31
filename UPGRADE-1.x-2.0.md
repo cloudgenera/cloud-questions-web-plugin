@@ -9,11 +9,13 @@ CloudDemand 2.0 introduces breaking changes to 1.x installations. As such, the f
 **IF your CloudDemand installation is NOT highly customized**, we recommend that you simply:
   - Download the latest version of `scripts/clouddemand.js` into your existing CloudDemand installation, being mindful of any small customizations you want to carryover to the updated library.
 
-  - Perform ONLY the steps in the [CloudDemand HTML Front-end Changes](#cloudDemand-html-frontend-changes) section.
+  - Perform ONLY the steps in the [CloudDemand HTML Front-end Changes](#clouddemand-html-front-end-changes) section.
 
-### CloudDemand HTML Front-end Changes
+## CloudDemand HTML Front-end Changes
 
-1. Update references to the CloudDemand invocation in your CloudDemand front-end page, template, or blade.
+### Change #1
+
+Update references to the CloudDemand invocation in your CloudDemand front-end page, template, or blade.
 
   Find:
   ```javascript
@@ -37,11 +39,12 @@ CloudDemand 2.0 introduces breaking changes to 1.x installations. As such, the f
   ```
   Where `XXXXXXXXXXXXXXXXXXXX` is your CloudDemand partner code. If you do not have a CloudDemand partner code, please contact your CloudGenera account representative to obtain one.
 
-### CloudDemand Javascript Library Changes
+## CloudDemand Javascript Library Updates
 
 The following changes are to be made in the CloudDemand core javascript library `scripts/clouddemand.js`.
 
-1. **Change Purpose:** By default, CloudDemand should now communicate with the CloudDemand Partner Proxy service, instead of making direct calls to the CloudGenera API.
+### Change #1
+By default, CloudDemand should now communicate with the CloudDemand Partner Proxy service, instead of making direct calls to the CloudGenera API.
 
   Find:
   ```javascript
@@ -93,7 +96,9 @@ The following changes are to be made in the CloudDemand core javascript library 
         };
   ```
 
-2. **Change Purpose:** Make sure POST data is properly formatted JSON and contentType is correctly set.
+### Change #2
+
+Make sure POST data is properly formatted JSON and contentType is correctly set.
 
   Find:
   ```javascript
@@ -142,7 +147,9 @@ The following changes are to be made in the CloudDemand core javascript library 
   });
   ```  
 
-3. **Change Purpose:** Make sure POST data is properly formatted JSON and contentType is correctly set. Better notifications.
+### Change #3
+
+Make sure POST data is properly formatted JSON and contentType is correctly set. Better notifications.
 
   Find:
   ```javascript
@@ -191,7 +198,9 @@ The following changes are to be made in the CloudDemand core javascript library 
   });
   ```  
 
-4. **Change Purpose:** Fixes IE 11 compatibility issues. IE 11 and prior versions do not support Javascript template literals.
+### Change #4
+
+Fixes IE 11 compatibility issues. IE 11 and prior versions do not support Javascript template literals.
 
   Find:
   ```javascript
@@ -390,7 +399,9 @@ The following changes are to be made in the CloudDemand core javascript library 
   }
   ```  
 
-5. **Change Purpose:** Allows CloudDemandInit function to accept CloudDemand Partner Code. Part of changeset to implement new CloudDemand Partner Proxy service.
+### Change #5
+
+Allows CloudDemandInit function to accept CloudDemand Partner Code. Part of changeset to implement new CloudDemand Partner Proxy service.
 
   Find:
   ```javascript
@@ -433,7 +444,9 @@ The following changes are to be made in the CloudDemand core javascript library 
   };
   ```
 
-6. **Change Purpose:** Removal of the forTestingPurposesOnly() function. CloudDemand users are no longer required to externally authenticate to the CloudDemand data service using their API key.
+### Change #6
+
+Removal of the forTestingPurposesOnly() function.
 
   Find and Remove:
   ```javascript
