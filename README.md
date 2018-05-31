@@ -13,7 +13,7 @@
 - [Known Issues](#known-issues)
   - [Internet Explorer Support](#internet-explorer-support)
 - [Release History](#release-history)
-  - [Upgrading to CloudDemand 2.0](#upgrading-to-clouddemand-2.0)
+  - [Upgrading to CloudDemand 2.0](#upgrading-to-clouddemand-20)
 
 ## Overview
 
