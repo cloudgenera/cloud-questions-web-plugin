@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.0.1 (2018-07-17)
+
+* Updated README
+
+---
+
 ## 2.0.0 (2018-05-31)
 
 **IMPORTANT:** CloudDemand 2.0 introduces breaking changes to 1.x installations. You may manually upgrade to CloudDemand 2.0 by following the instructions in the [Upgrading to CloudDemand 2.0](./UPGRADE-1.x-2.0.md) guide.
