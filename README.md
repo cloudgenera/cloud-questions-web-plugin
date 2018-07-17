@@ -110,7 +110,7 @@ If you're having trouble or need a little inspiration, check out a few live Clou
 | CloudGenera | [Try CloudDemand!](https://cloudgenera.com/clouddemand) |
 | CloudGenera | [CloudDemand Example Template #1](https://cloudgenera.com/clouddemand/example-1) |
 | Brookey & Company | [Cloud Assist](https://www.brookeyco.com/clouddemand) |
-| Hewlett Packard Enterprise | [Cloud Provider Quiz](https://h41403.www4.hpe.com/campaign/cloud-provider-quiz.html) |
+| Hewlett Packard Enterprise | [Make cloud decisions in minutes, not months](https://h41403.www4.hpe.com/campaign/cloud-provider-quiz.html) |
 | Techpower IT Solutions | [Are You Cloud Ready?](https://www.techpowerusa.com/clouddemand/) |
 
 ---
